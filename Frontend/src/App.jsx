@@ -1,17 +1,21 @@
-import React from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Home from './components/Home'
-import Testinomials from './components/Testinomials'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+
+import Home from './components/Home';
+import Testinomials from './components/Testimonials';
+import TestinomialList from './components/TestimonialList';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/testinomials" element={<Testinomials/>} />
+        <Route path="/testimonial" element={<Testinomials />} />
+        <Route path="/list" element={<TestinomialList />} />
       </Routes>
-    </BrowserRouter>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
