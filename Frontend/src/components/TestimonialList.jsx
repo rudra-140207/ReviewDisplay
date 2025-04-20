@@ -42,19 +42,19 @@ const TestimonialsList = () => {
     let filtered = testimonials;
 
     if (mentorFilter) {
-      filtered = filtered.filter(t =>
+      filtered = filtered.filter((t) =>
         t.mentor?.toLowerCase().includes(mentorFilter.toLowerCase())
       );
     }
 
     if (branchFilter) {
-      filtered = filtered.filter(t =>
+      filtered = filtered.filter((t) =>
         t.branch?.toLowerCase().includes(branchFilter.toLowerCase())
       );
     }
 
     if (nameSearch) {
-      filtered = filtered.filter(t =>
+      filtered = filtered.filter((t) =>
         t.name?.toLowerCase().includes(nameSearch.toLowerCase())
       );
     }
@@ -94,7 +94,6 @@ const TestimonialsList = () => {
 
       <ToastContainer />
 
-      {/* Back Arrow */}
       {passwordEntered && (
         <button
           onClick={() => navigate("/")}
@@ -104,7 +103,6 @@ const TestimonialsList = () => {
         </button>
       )}
 
-      {/* Password Prompt */}
       {!passwordEntered && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-30">
           <div className="bg-white rounded-xl p-6 w-80 shadow-lg">
@@ -129,14 +127,12 @@ const TestimonialsList = () => {
         </div>
       )}
 
-      {/* Main Content */}
       {passwordEntered && (
         <>
           <h1 className="text-3xl sm:text-4xl font-bold text-center text-indigo-800 mb-8 z-10">
             Testimonials from Our Happy Students
           </h1>
 
-          {/* Filters */}
           <div className="z-10 w-full max-w-4xl mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <input
               type="text"
@@ -152,16 +148,9 @@ const TestimonialsList = () => {
               onChange={(e) => setMentorFilter(e.target.value)}
               className="p-3 font-bold rounded-lg border border-gray-500"
             />
-            {/* <input
-              type="text"
-              placeholder="Filter by Branch"
-              value={branchFilter}
-              onChange={(e) => setBranchFilter(e.target.value)}
-              className="p-3 font-bold rounded-lg border border-gray-500"
-            /> */}
+            {/* Optional Branch Filter */}
           </div>
 
-          {/* Testimonials */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 z-10 w-full max-w-6xl">
             {loading ? (
               <div className="col-span-full flex justify-center py-10">
@@ -178,14 +167,21 @@ const TestimonialsList = () => {
                     <img
                       src={testimonial.photo}
                       alt={testimonial.name}
-                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-indigo-400"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-4 border-indigo-400"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-semibold text-indigo-700 text-center">
+                  <h3 className="text-sm sm:text-lg font-semibold text-indigo-700 text-center">
                     {testimonial.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 text-center">{testimonial.branch}</p>
-                  <p className="mt-2 text-gray-700 text-center text-sm">
+                  <p className="text-xs sm:text-sm text-gray-500 text-center">
+                    {testimonial.branch}
+                  </p>
+                  {testimonial.placedAt && (
+                    <p className="text-sm md:text-md text-center text-gray-600">
+                      Placed at: <span className="font-medium md:font-semibold">{testimonial.placedAt}</span>
+                    </p>
+                  )}
+                  <p className="hidden sm:block mt-2 text-gray-700 text-center text-sm">
                     {testimonial.message.substring(0, 100)}...
                   </p>
                 </div>
@@ -193,7 +189,6 @@ const TestimonialsList = () => {
             )}
           </div>
 
-          {/* Modal */}
           {isModalOpen && selectedTestimonial && (
             <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50 px-4">
               <div className="bg-white rounded-xl p-6 w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
@@ -214,9 +209,28 @@ const TestimonialsList = () => {
                 <h3 className="text-2xl font-semibold text-indigo-700 text-center">
                   {selectedTestimonial.name}
                 </h3>
-                <p className="text-sm text-gray-500 text-center mb-4">
+                <p className="text-sm text-gray-500 text-center">
                   {selectedTestimonial.branch}
                 </p>
+
+                {selectedTestimonial.placedAt && (
+                  <p className=" font-bold text-gray-600 text-center mb-2">
+                    Placed at :{" "}
+                    <span className="font-bold">{selectedTestimonial.placedAt}</span>
+                  </p>
+                )}
+                {selectedTestimonial.linkedinUrl && (
+                  <p className="text-sm text-blue-600 text-center mb-4">
+                    <a
+                      href={selectedTestimonial.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-blue-800"
+                    >
+                      View LinkedIn Profile
+                    </a>
+                  </p>
+                )}
 
                 <p className="text-gray-700 text-justify text-base whitespace-pre-wrap">
                   {selectedTestimonial.message}
@@ -229,8 +243,12 @@ const TestimonialsList = () => {
                 )}
 
                 <div className="mt-4 bg-gray-50 p-3 rounded-lg text-sm">
-                  <p><strong>Roll No:</strong> {selectedTestimonial.rollNo}</p>
-                  <p className="mt-2"><strong>Mentor:</strong> {selectedTestimonial.mentor}</p>
+                  <p>
+                    <strong>Roll No:</strong> {selectedTestimonial.rollNo}
+                  </p>
+                  <p className="mt-2">
+                    <strong>Mentor:</strong> {selectedTestimonial.mentor}
+                  </p>
                 </div>
               </div>
             </div>

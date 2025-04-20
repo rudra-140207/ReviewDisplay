@@ -9,6 +9,8 @@ const testimonialSchema = new mongoose.Schema(
     photo: String,
     message: String,
     remark: String,
+    placedAt: String,
+    linkedinUrl: String,
   },
   { timestamps: true }
 );

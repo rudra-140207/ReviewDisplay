@@ -165,8 +165,27 @@ const Testimonials = () => {
             type="text"
             name="mentor"
             placeholder="Mentor Name"
-            className="input-style"
+            className="input-style "
             value={formData.mentor}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="placedAt"
+            placeholder="Company Placed At"
+            className="input-style"
+            value={formData.placedAt}
+            onChange={handleChange}
+          />
+
+          <input
+            type="url"
+            name="linkedinUrl"
+            placeholder="LinkedIn Profile URL"
+            className="input-style"
+            value={formData.linkedinUrl}
             onChange={handleChange}
             required
           />
