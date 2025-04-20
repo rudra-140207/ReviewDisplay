@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { ImSpinner2 } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
+
+import kiet2 from "../assets/kiet2.jpg";
 
 const Testimonials = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +21,20 @@ const Testimonials = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const branches = [
-    "CSE", "CS", "IT", "CSIT", "CS-AI", "CS-AIML", "EEE", "ECE", "ME"
+    "CSE",
+    "CS",
+    "IT",
+    "CSIT",
+    "CS-AI",
+    "CS-AIML",
+    "EEE",
+    "ECE",
+    "ME",
   ];
 
   const handleChange = (e) => {
@@ -40,11 +53,8 @@ const Testimonials = () => {
     uploadData.append("image", file);
 
     try {
-      const res = await axios.post(
-        import.meta.env.VITE_IMGBB_API,
-        uploadData
-      );
-      
+      const res = await axios.post(import.meta.env.VITE_IMGBB_API, uploadData);
+
       if (res.data && res.data.data && res.data.data.url) {
         setFormData((prev) => ({ ...prev, photo: res.data.data.url }));
         toast.success("Photo uploaded successfully!");
@@ -88,7 +98,23 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-200 via-blue-100 to-pink-200 py-12 px-4 flex items-center justify-center">
+    <div className="relative min-h-screen flex flex-col items-center justify-center text-gray-800 px-4">
+      {/* Blurred background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{ backgroundImage: `url(${kiet2})` }}
+      ></div>
+
+      {/* Overlay to soften background */}
+      <div className="absolute inset-0 bg-white/60 z-0"></div>
+
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-6 left-6 bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg hover:bg-white transition z-10"
+      >
+        <IoArrowBack className="text-2xl text-indigo-700" />
+      </button>
+
       <form
         onSubmit={handleSubmit}
         className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-full max-w-4xl space-y-8 border border-purple-300"
