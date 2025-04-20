@@ -42,7 +42,7 @@ const TestimonialsList = () => {
   };
 
   const handlePasswordSubmit = () => {
-    if (password === "Rudra07") {
+    if (password === "Rudra07" || password === "kieteee") {
       setPasswordEntered(true);
     } else {
       toast.error("Incorrect Password");
