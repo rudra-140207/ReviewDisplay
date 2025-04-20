@@ -11,7 +11,7 @@ const TestimonialsList = () => {
   const [passwordEntered, setPasswordEntered] = useState(false);
   const [password, setPassword] = useState("");
 
-//   const backendUrl = "http://localhost:5000";
+  //   const backendUrl = "http://localhost:5000";
   const backendUrl = "https://kiet-testimonial-backend.onrender.com";
 
   useEffect(() => {
@@ -63,7 +63,9 @@ const TestimonialsList = () => {
       {!passwordEntered && (
         <div className="fixed inset-0 bg-gradient-to-br from-purple-200 via-blue-100 to-pink-200 bg-opacity-50 flex justify-center items-center z-20">
           <div className="bg-white rounded-lg p-8 w-80">
-            <h2 className="text-2xl font-semibold text-indigo-700 text-center mb-6">Enter Password</h2>
+            <h2 className="text-2xl font-semibold text-indigo-700 text-center mb-6">
+              Enter Password
+            </h2>
             <input
               type="password"
               value={password}
@@ -109,9 +111,13 @@ const TestimonialsList = () => {
                       className="w-32 h-32 rounded-full object-cover border-4 border-indigo-400"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-indigo-700">{testimonial.name}</h3>
+                  <h3 className="text-xl font-semibold text-indigo-700">
+                    {testimonial.name}
+                  </h3>
                   <p className="text-sm text-gray-500">{testimonial.branch}</p>
-                  <p className="mt-4 text-gray-700">{testimonial.message.substring(0, 100)}...</p>
+                  <p className="mt-4 text-gray-700">
+                    {testimonial.message.substring(0, 100)}...
+                  </p>
                 </div>
               ))
             )}
@@ -119,18 +125,18 @@ const TestimonialsList = () => {
 
           {/* Modal (Popup) */}
           {isModalOpen && selectedTestimonial && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-              <div className="bg-white rounded-lg p-8 w-11/12 md:w-7/12 lg:w-5/12 relative z-10">
+            <div className="fixed inset-0 bg-gradient-to-br from-purple-200 via-blue-100 to-pink-200 bg-opacity-50 flex justify-center items-center z-30 overflow-y-auto py-8 px-4">
+              <div className="bg-white rounded-lg p-6 w-full max-w-lg relative z-40 max-h-[90vh] overflow-y-auto">
                 {/* Close Button */}
                 <button
                   onClick={closeModal}
-                  className="absolute top-4 right-4 text-3xl font-bold text-indigo-600 hover:text-indigo-800"
+                  className="absolute top-4 right-4 text-3xl font-bold text-indigo-600 hover:text-indigo-800 z-50"
                 >
                   &times;
                 </button>
 
                 {/* Testimonial Content */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-6 mt-4">
                   <img
                     src={selectedTestimonial.photo}
                     alt="testimonial"
@@ -138,11 +144,15 @@ const TestimonialsList = () => {
                   />
                 </div>
 
-                <h3 className="text-3xl font-semibold text-indigo-700">{selectedTestimonial.name}</h3>
-                <p className="text-lg text-gray-500">{selectedTestimonial.branch}</p>
+                <h3 className="text-2xl font-semibold text-indigo-700 text-center">
+                  {selectedTestimonial.name}
+                </h3>
+                <p className="text-md text-gray-500 text-center">
+                  {selectedTestimonial.branch}
+                </p>
 
-                <div className="mt-6">
-                  <p className="text-lg text-gray-700">{selectedTestimonial.message}</p>
+                <div className="mt-6 text-gray-700 text-justify px-1">
+                  <p className="text-base">{selectedTestimonial.message}</p>
 
                   {selectedTestimonial.remark && (
                     <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-sm">
@@ -162,9 +172,6 @@ const TestimonialsList = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Blur Effect on Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-200 via-blue-100 to-pink-200 bg-opacity-20 backdrop-blur-md z-0"></div>
             </div>
           )}
         </>
