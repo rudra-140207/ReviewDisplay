@@ -13,7 +13,10 @@ const Testimonials = () => {
     branch: "",
     rollNo: "",
     mentor: "",
+    linkedinUrl: "",
+    placedAt: "",
     message: "",
+    motivation: "",
     remark: "",
     photo: "",
   });
@@ -85,7 +88,10 @@ const Testimonials = () => {
         branch: "",
         rollNo: "",
         mentor: "",
+        linkedinUrl: "",
+        placedAt: "",
         message: "",
+        motivation: "",
         remark: "",
         photo: "",
       });
@@ -178,6 +184,7 @@ const Testimonials = () => {
             className="input-style"
             value={formData.placedAt}
             onChange={handleChange}
+            required
           />
 
           <input
@@ -219,10 +226,22 @@ const Testimonials = () => {
         <div className="space-y-4">
           <textarea
             name="message"
-            rows="7"
-            placeholder="Your Message"
+            rows="5"
+            minLength={100}
+            placeholder="Your Message / Experience in minimum 100 words"
             className="input-style resize-none w-full"
             value={formData.message}
+            onChange={handleChange}
+            required
+          />
+
+          <textarea
+            name="motivation"
+            rows="3"
+            minLength={50}
+            placeholder="Your Message to your junior in minimum 50 words"
+            className="input-style resize-none w-full"
+            value={formData.motivation}
             onChange={handleChange}
             required
           />

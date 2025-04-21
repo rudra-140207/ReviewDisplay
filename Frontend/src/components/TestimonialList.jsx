@@ -178,7 +178,10 @@ const TestimonialsList = () => {
                   </p>
                   {testimonial.placedAt && (
                     <p className="text-sm md:text-md text-center text-gray-600">
-                      Placed at: <span className="font-medium md:font-semibold">{testimonial.placedAt}</span>
+                      Placed at:{" "}
+                      <span className="font-medium md:font-semibold">
+                        {testimonial.placedAt}
+                      </span>
                     </p>
                   )}
                   <p className="hidden sm:block mt-2 text-gray-700 text-center text-sm">
@@ -216,7 +219,9 @@ const TestimonialsList = () => {
                 {selectedTestimonial.placedAt && (
                   <p className=" font-bold text-gray-600 text-center mb-2">
                     Placed at :{" "}
-                    <span className="font-bold">{selectedTestimonial.placedAt}</span>
+                    <span className="font-bold">
+                      {selectedTestimonial.placedAt}
+                    </span>
                   </p>
                 )}
                 {selectedTestimonial.linkedinUrl && (
@@ -232,8 +237,18 @@ const TestimonialsList = () => {
                   </p>
                 )}
 
+                <h4 className="text-md font-semibold text-indigo-700">
+                  Testimonial / Experience
+                </h4>
                 <p className="text-gray-700 text-justify text-base whitespace-pre-wrap">
                   {selectedTestimonial.message}
+                </p>
+
+                <h4 className="text-md mt-4 font-semibold text-indigo-700">
+                  Message to Juniors
+                </h4>
+                <p className="text-gray-700 text-justify text-base whitespace-pre-wrap">
+                  {selectedTestimonial.motivation}
                 </p>
 
                 {selectedTestimonial.remark && (

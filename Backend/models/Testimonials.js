@@ -8,6 +8,7 @@ const testimonialSchema = new mongoose.Schema(
     mentor: String,
     photo: String,
     message: String,
+    motivation: String,
     remark: String,
     placedAt: String,
     linkedinUrl: String,
