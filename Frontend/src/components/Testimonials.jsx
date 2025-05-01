@@ -42,6 +42,17 @@ const Testimonials = () => {
     "ME",
   ];
 
+  const wakeUpCall = async () => {
+    try {
+      const res = await axios.get(import.meta.env.VITE_BACKEND_URL);
+      console.log(res.data);
+    } catch (err) {
+      console.error("Backend wake-up failed:", err);
+    }
+  };
+
+  wakeUpCall();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
