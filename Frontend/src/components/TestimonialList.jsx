@@ -130,9 +130,8 @@ const TestimonialsList = () => {
       {passwordEntered && (
         <>
           <h1 className="text-3xl sm:text-4xl font-bold text-center text-indigo-800 mb-8 z-10">
-            Testimonials from Our Happy Students
+            Testimonials from 2025 passouts
           </h1>
-
           <div className="z-10 w-full max-w-4xl mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <input
               type="text"
@@ -263,6 +262,12 @@ const TestimonialsList = () => {
                   </p>
                   <p className="mt-2">
                     <strong>Mentor:</strong> {selectedTestimonial.mentor}
+                  </p>
+                  <p className="mt-2">
+                    <strong>Phone no: </strong> {selectedTestimonial.mobile}
+                  </p>
+                  <p className="mt-2">
+                    <strong>Email:</strong> {selectedTestimonial.emailId}
                   </p>
                 </div>
               </div>

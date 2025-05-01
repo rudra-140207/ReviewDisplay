@@ -12,6 +12,8 @@ const testimonialSchema = new mongoose.Schema(
     remark: String,
     placedAt: String,
     linkedinUrl: String,
+    mobile: String,
+    emailId: String,
   },
   { timestamps: true }
 );

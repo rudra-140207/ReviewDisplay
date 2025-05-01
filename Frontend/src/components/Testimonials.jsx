@@ -19,6 +19,8 @@ const Testimonials = () => {
     motivation: "",
     remark: "",
     photo: "",
+    mobile:"",
+    emailId:"",
   });
 
   const [imagePreview, setImagePreview] = useState(null);
@@ -94,6 +96,8 @@ const Testimonials = () => {
         motivation: "",
         remark: "",
         photo: "",
+        mobile:"",
+        emailId:"",
       });
       setImagePreview(null);
     } catch (err) {
@@ -193,6 +197,26 @@ const Testimonials = () => {
             placeholder="LinkedIn Profile URL"
             className="input-style"
             value={formData.linkedinUrl}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="email"
+            name="emailId"
+            placeholder="Your Personel Email"
+            className="input-style"
+            value={formData.emailId}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="tel"
+            name="mobile"
+            placeholder="Your Mobile Number"
+            className="input-style"
+            value={formData.mobile}
             onChange={handleChange}
             required
           />
